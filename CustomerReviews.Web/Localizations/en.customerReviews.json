@@ -1,0 +1,30 @@
+{
+    "customerReviews": {
+        "blades": {
+            "review-list": {
+                "labels": {
+                    "content": "Content",
+                    "modifiedDate": "Last updated",
+                    "no-review": "No Customer Reviews found"
+                }
+            },
+            "review-detail": {
+                "labels": {
+                    "title": "Customer review detail",
+                    "authorNickname": "Author Name",
+                    "content": "Review",
+                    "productName": "Product Name",
+                    "rate": "Rate"
+                }
+            }
+        },
+        "widgets": {
+            "item-detail": {
+                "title": "Customer reviews"
+            },
+            "averageRate-detail": {
+                "title": "Average product rating"
+            }
+        }
+    }
+}

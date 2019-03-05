@@ -1,0 +1,46 @@
+﻿<div class="blade-container">
+    <div class="blade-content">
+        <div class="blade-inner">
+            <div class="inner-block clearfix" ng-controller="CustomerReviews.Web.reviewDetailController">
+                <form class="form" name="detailForm">
+                    <fieldset>
+                        <div class="columns">
+                            <div class="column">
+                                <div class="form-group">
+                                    <label class="form-label">{{'customerReviews.blades.review-detail.labels.authorNickname' | translate}}</label>
+                                    <div class="form-input">
+                                        <input ng-model="blade.currentEntity.authorNickname" readonly/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column">
+                                <div class="form-group">
+                                    <label class="form-label">{{'customerReviews.blades.review-detail.labels.rate' | translate}}</label>
+                                    <div class="form-input">
+                                        <input ng-model="blade.currentEntity.rate" readonly/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">{{'customerReviews.blades.review-detail.labels.content' | translate}}</label>
+                            <div class="form-input">
+                                <textarea class="form-control" required cols="30" rows="10" ng-model="blade.currentEntity.content" readonly></textarea>
+                            </div>
+                        </div>
+                        <div class="columns">
+                            <div class="column">
+                                <div class="form-group">
+                                    <label class="form-label">{{'customerReviews.blades.review-detail.labels.productName' | translate}}</label>
+                                    <div class="form-input">
+                                        <a href ng-click="blade.openProductDetails()">{{blade.product.name}}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
