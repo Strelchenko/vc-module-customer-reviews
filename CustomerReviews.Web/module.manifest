@@ -7,7 +7,7 @@
     <title>Sample Customer reviews module</title>
     <description>Sample module demonstrating best practices in a real life example.</description>
     <authors>
-        <author>Egidijus Mazeika</author>
+        <author>Alexander Strelchenko</author>
     </authors>
 
     <assemblyFile>CustomerReviews.Web.dll</assemblyFile>

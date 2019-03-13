@@ -38,7 +38,8 @@ namespace CustomerReviews.Test
                 CreatedDate = DateTime.Now,
                 CreatedBy = "initial data seed",
                 AuthorNickname = "John Doe",
-                Content = "Liked that"
+                Content = "Liked that",
+                Rate = 5
             };
 
             CustomerReviewService.SaveCustomerReviews(new[] { item });
@@ -85,32 +86,56 @@ namespace CustomerReviews.Test
             Assert.Empty(getByIdsResult);
         }
 
+        [Fact]
+        public void CanRecountAverageProductRate()
+        {
+            // Create review for test
+            var item = new CustomerReview
+            {
+                Id = CustomerReviewId,
+                ProductId = ProductId,
+                CreatedDate = DateTime.Now,
+                CreatedBy = "initial data seed",
+                AuthorNickname = "John Doe",
+                Content = "Liked that",
+                Rate = 5
+            };
+
+            CustomerReviewService.SaveCustomerReviews(new[] { item });
+
+            // Check result
+            var getByIdsResult = AverageProductRateService.GetByProductIds(new[] { ProductId });
+            Assert.Single(getByIdsResult);
+
+            var avgRate = getByIdsResult[0];
+            Assert.Equal(ProductId, avgRate.ProductId);
+            Assert.Equal(item.Rate, avgRate.AverageRate);
+
+            // Delete test review
+            CanDeleteCustomerReviews();
+        }
+
         private ICustomerReviewSearchService CustomerReviewSearchService
         {
-            get
-            {
-                return new CustomerReviewSearchService(GetRepository, CustomerReviewService);
-            }
+            get { return new CustomerReviewSearchService(GetRepository, CustomerReviewService); }
         }
+
         protected IAverageProductRateService AverageProductRateService
         {
-            get
-            {
-                return new AverageProductRateService(GetRepository);
-            }
+            get { return new AverageProductRateService(GetRepository); }
         }
+
         private ICustomerReviewService CustomerReviewService
         {
-            get
-            {
-                return new CustomerReviewService(GetRepository, AverageProductRateService);
-            }
+            get { return new CustomerReviewService(GetRepository, AverageProductRateService); }
         }
 
         protected ICustomerReviewRepository GetRepository()
         {
-            var repository = new CustomerReviewRepository(ConnectionString, new EntityPrimaryKeyGeneratorInterceptor(), new AuditableInterceptor(null));
-            EnsureDatabaseInitialized(() => new CustomerReviewRepository(ConnectionString), () => Database.SetInitializer(new SetupDatabaseInitializer<CustomerReviewRepository, Configuration>()));
+            var repository = new CustomerReviewRepository(ConnectionString, new EntityPrimaryKeyGeneratorInterceptor(),
+                new AuditableInterceptor(null));
+            EnsureDatabaseInitialized(() => new CustomerReviewRepository(ConnectionString),
+                () => Database.SetInitializer(new SetupDatabaseInitializer<CustomerReviewRepository, Configuration>()));
             return repository;
         }
     }

@@ -23,10 +23,5 @@ namespace CustomerReviews.Data.Migrations
                 .PrimaryKey(t => t.Id);
 
         }
-
-        public override void Down()
-        {
-            DropTable("dbo.CustomerReview");
-        }
     }
 }

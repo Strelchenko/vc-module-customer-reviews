@@ -8,7 +8,6 @@ namespace CustomerReviews.Core.Services
 
         void SaveAverageProductRates(AverageProductRate item);
 
-        void DeleteAverageProductRates(string[] ids);
         void RecountAverageProductRate();
     }
 }

@@ -125,9 +125,6 @@
     <Content Include="Scripts\widgets\customerReviewWidget.tpl.html" />
     <None Include="module.ignore" />
     <None Include="packages.config" />
-    <None Include="Content\help\index.html" />
-    <None Include="Content\help\stylesheet.css" />
-    <None Include="Content\help\sample.png" />
     <None Include="app.config" />
     <None Include="Web.config" />
     <None Include="Web.Debug.config">
@@ -139,7 +136,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="module.manifest" />
-    <Content Include="Content\css\CustomerReviews.Web.css" />
     <Content Include="Scripts\blades\reviews-list.js" />
     <Content Include="Scripts\blades\reviews-list.tpl.html" />
     <Content Include="Scripts\CustomerReviews.Web.js" />

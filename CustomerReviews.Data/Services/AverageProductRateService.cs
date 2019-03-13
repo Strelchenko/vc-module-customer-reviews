@@ -56,15 +56,6 @@ namespace CustomerReviews.Data.Services
             }
         }
 
-        public void DeleteAverageProductRates(string[] ids)
-        {
-            using (var repository = _repositoryFactory())
-            {
-                repository.DeleteAverageProductRates(ids);
-                CommitChanges(repository);
-            }
-        }
-
         public void RecountAverageProductRate()
         {
             using (var repository = _repositoryFactory())
