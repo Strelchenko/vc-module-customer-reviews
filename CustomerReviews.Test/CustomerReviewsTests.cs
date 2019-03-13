@@ -115,6 +115,29 @@ namespace CustomerReviews.Test
             CanDeleteCustomerReviews();
         }
 
+        [Fact]
+        public void CanNotSaveCustomerReviews()
+        {
+            // Try create review for test
+            var item = new CustomerReview
+            {
+                Id = CustomerReviewId,
+                ProductId = ProductId,
+                CreatedDate = DateTime.Now,
+                CreatedBy = "initial data seed",
+                AuthorNickname = "John Doe",
+                Content = "Liked that",
+                Rate = 10
+            };
+
+            CustomerReviewService.SaveCustomerReviews(new[] { item });
+
+            // Check result
+            var getByIdsResult = CustomerReviewService.GetByIds(new[] { CustomerReviewId });
+            Assert.NotNull(getByIdsResult);
+            Assert.Empty(getByIdsResult);
+        }
+
         private ICustomerReviewSearchService CustomerReviewSearchService
         {
             get { return new CustomerReviewSearchService(GetRepository, CustomerReviewService); }

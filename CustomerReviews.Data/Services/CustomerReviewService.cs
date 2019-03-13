@@ -45,6 +45,9 @@ namespace CustomerReviews.Data.Services
                             .ToArray());
                     foreach (var derivativeContract in items)
                     {
+                        if (derivativeContract.Rate < 1 || derivativeContract.Rate > 5)
+                            continue;
+
                         var sourceEntity = AbstractTypeFactory<CustomerReviewEntity>.TryCreateInstance()
                             .FromModel(derivativeContract, pkMap);
                         var targetEntity = alreadyExistEntities.FirstOrDefault(x => x.Id == sourceEntity.Id);
